@@ -16,9 +16,9 @@
 #   - Backup/restore helpers (in scripts/lib_backup.sh).
 #   - App enablement/editor selection (lib_apps.sh).
 #   - Copy phases (lib_copy.sh):
-#       * Part 1: fastfetch/kitty/rofi/swaync (prompted replace).
+#       * Part 1: fastfetch/rofi/swaync (prompted replace).
 #       * Waybar special handling (symlinks, configs/styles restore).
-#       * Part 2: other configs (btop, cava, hypr, etc.) + ghostty/wezterm installs.
+#       * Part 2: other configs (alacritty, btop, cava, hypr, zellij, etc.) + ghostty/wezterm installs.
 #   - UserConfigs/UserScripts and hypr file restores.
 #   - Wallpaper handling (default + optional 1GB pack).
 #   - Backup cleanup (auto in express).
@@ -31,7 +31,7 @@
 
 clear
 wallpaper=$HOME/.config/hypr/wallpaper_effects/.wallpaper_current
-waybar_style="$HOME/.config/waybar/style/[Extra] Neon Circuit.css"
+waybar_style="$HOME/.config/waybar/style/[Cosmic] Nebula.css"
 waybar_config="$HOME/.config/waybar/configs/[TOP] Default"
 waybar_config_laptop="$HOME/.config/waybar/configs/[TOP] Default Laptop"
 
@@ -334,8 +334,10 @@ while true; do
 done
 echo "${OK} You have chosen $resolution resolution." 2>&1 | tee -a "$LOG"
 if [ "$resolution" == "< 1440p" ]; then
-  # kitty font size
-  sed -i 's/font_size 16.0/font_size 14.0/' config/kitty/kitty.conf
+  # alacritty font size
+  if [ -f config/alacritty/alacritty.toml ]; then
+    sed -i 's/size = 12.5/size = 11.5/' config/alacritty/alacritty.toml
+  fi
 
   # hyprlock matters
   if [ -f config/hypr/hyprlock.conf ]; then
@@ -348,8 +350,8 @@ if [ "$resolution" == "< 1440p" ]; then
   # rofi fonts reduction
   rofi_config_file="config/rofi/0-shared-fonts.rasi"
   if [ -f "$rofi_config_file" ]; then
-    sed -i '/element-text {/,/}/s/[[:space:]]*font: "JetBrainsMono Nerd Font SemiBold 13"/font: "JetBrainsMono Nerd Font SemiBold 11"/' "$rofi_config_file" 2>&1 | tee -a "$LOG"
-    sed -i '/configuration {/,/}/s/[[:space:]]*font: "JetBrainsMono Nerd Font SemiBold 15"/font: "JetBrainsMono Nerd Font SemiBold 13"/' "$rofi_config_file" 2>&1 | tee -a "$LOG"
+    sed -i '/element-text {/,/}/s/[[:space:]]*font: "JetBrainsMono Nerd Font SemiBold 12"/font: "JetBrainsMono Nerd Font SemiBold 11"/' "$rofi_config_file" 2>&1 | tee -a "$LOG"
+    sed -i '/configuration {/,/}/s/[[:space:]]*font: "JetBrainsMono Nerd Font SemiBold 13"/font: "JetBrainsMono Nerd Font SemiBold 12"/' "$rofi_config_file" 2>&1 | tee -a "$LOG"
   fi
 fi
 

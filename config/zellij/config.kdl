@@ -1,0 +1,36 @@
+keybinds {
+    normal {
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        bind "Alt -" { NewPane "Down"; }
+        bind "Alt \\" { NewPane "Right"; }
+        bind "Alt w" { ToggleFloatingPanes; }
+        bind "Alt x" { CloseFocus; }
+    }
+}
+
+default_layout "compact"
+default_shell "zsh"
+pane_frames false
+
+theme "cosmic"
+
+themes {
+    cosmic {
+        bg "#111824"
+        fg "#d9e2ff"
+
+        black "#0f1522"
+        red "#f38ba8"
+        green "#a6e3a1"
+        yellow "#f9e2af"
+        blue "#89b4fa"
+        magenta "#cba6f7"
+        cyan "#94e2d5"
+        white "#d9e2ff"
+
+        orange "#fab387"
+    }
+}

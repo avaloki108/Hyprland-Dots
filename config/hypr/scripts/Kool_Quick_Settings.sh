@@ -192,7 +192,6 @@ Edit System Default Window Rules
 Edit System Default Settings
 --- UTILITIES ---
 Set SDDM Wallpaper
-Choose Kitty Terminal Theme
 Configure Monitors (nwg-displays)
 Configure Workspace Rules (nwg-displays)
 GTK Settings (nwg-look)
@@ -228,7 +227,6 @@ main() {
         "Edit System Default Window Rules") file="$configs/WindowRules.conf" ;;
         "Edit System Default Settings") file="$configs/SystemSettings.conf" ;;
         "Set SDDM Wallpaper") $scriptsDir/sddm_wallpaper.sh --normal ;;
-        "Choose Kitty Terminal Theme") $scriptsDir/Kitty_themes.sh ;;
         "Configure Monitors (nwg-displays)") 
             if ! command -v nwg-displays &>/dev/null; then
                 notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Install nwg-displays first"

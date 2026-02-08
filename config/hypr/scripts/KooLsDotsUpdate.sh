@@ -43,30 +43,30 @@ else
 
   response=$($notify_cmd_shot "KooL Hyprland:" "Update available! Update now?")
 
-  case "$response" in
-    "action1")  
-      if [ -d "$KooL_Dots_DIR" ]; then
-      	if ! command -v kitty &> /dev/null; then
-  			notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Kitty terminal not found. Please install Kitty terminal."
-  			exit 1
-		fi
-        kitty -e bash -c "
-          cd \"$KooL_Dots_DIR\" &&
-          git stash &&
-          git pull &&
-          ./copy.sh &&
-		  notify-send -u critical -i "$iDIR/ja.png" 'Update Completed:' 'Kindly log out and relogin to take effect'
-        "
-	
-      else
-         if ! command -v kitty &> /dev/null; then
-  		  	notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Kitty terminal not found. Please install Kitty terminal."
-  			exit 1
-		fi
-        kitty -e bash -c "
-          git clone --depth=1 https://github.com/JaKooLit/Hyprland-Dots.git $KooL_Dots_DIR &&
-          cd \"$KooL_Dots_DIR\" &&
-          chmod +x copy.sh &&
+	  case "$response" in
+	    "action1")  
+	      if [ -d "$KooL_Dots_DIR" ]; then
+	      	if ! command -v alacritty &> /dev/null; then
+	  			notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Alacritty terminal not found. Please install Alacritty."
+	  			exit 1
+			fi
+	        alacritty -e bash -c "
+	          cd \"$KooL_Dots_DIR\" &&
+	          git stash &&
+	          git pull &&
+	          ./copy.sh &&
+			  notify-send -u critical -i "$iDIR/ja.png" 'Update Completed:' 'Kindly log out and relogin to take effect'
+	        "
+		
+	      else
+	         if ! command -v alacritty &> /dev/null; then
+	  		  	notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Alacritty terminal not found. Please install Alacritty."
+	  			exit 1
+			fi
+	        alacritty -e bash -c "
+	          git clone --depth=1 https://github.com/JaKooLit/Hyprland-Dots.git $KooL_Dots_DIR &&
+	          cd \"$KooL_Dots_DIR\" &&
+	          chmod +x copy.sh &&
           ./copy.sh &&
 		  notify-send -u critical -i "$iDIR/ja.png" 'Update Completed:' 'Kindly log out and relogin to take effect'
         "

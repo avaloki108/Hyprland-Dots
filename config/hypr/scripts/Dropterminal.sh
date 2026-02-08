@@ -7,7 +7,7 @@
 # Usage: ./Dropdown.sh [-d] <terminal_command>
 # Example: ./Dropdown.sh foot
 #          ./Dropdown.sh -d foot (with debug output)
-#          ./Dropdown.sh "kitty -e zsh"
+#          ./Dropdown.sh "alacritty --command zellij"
 #          ./Dropdown.sh "alacritty --working-directory /home/user"
 
 DEBUG=false
@@ -30,7 +30,7 @@ if [ "$1" = "-d" ]; then
   shift
 fi
 
-TERMINAL_CMD="$1"
+TERMINAL_CMD="$*"
 
 # Debug echo function
 debug_echo() {
@@ -45,7 +45,7 @@ if [ -z "$TERMINAL_CMD" ]; then
   echo "Examples:"
   echo "  $0 foot"
   echo "  $0 -d foot (with debug output)"
-  echo "  $0 'kitty -e zsh'"
+  echo "  $0 'alacritty --command zellij'"
   echo "  $0 'alacritty --working-directory /home/user'"
   echo ""
   echo "Edit the script to modify size and position:"

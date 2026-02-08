@@ -1,59 +1,70 @@
-/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-
-// ### DEFAULT - Top ### //
 {
-"include": [
-  "$HOME/.config/waybar/Modules",
-  "$HOME/.config/waybar/ModulesWorkspaces",
-  "$HOME/.config/waybar/ModulesCustom",
-  "$HOME/.config/waybar/ModulesGroups",
-  "$HOME/.config/waybar/UserModules",
-  ],
-"layer": "top",
-//"mode": "dock",
-"exclusive": true,
-"passthrough": false,
-"position": "top",
-"spacing": 3,
-"fixed-center": true,
-"ipc": true,
-"margin-top": 3,
-"margin-left": 8,
-"margin-right": 8,
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "spacing": 8,
+  "margin-top": 8,
+  "margin-left": 10,
+  "margin-right": 10,
+  "modules-left": ["custom/cosmic-launcher", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["network", "pulseaudio", "battery", "tray"],
 
-"modules-left": [
-	"custom/separator#blank",
-	"custom/cava_mviz",
-	"custom/separator#blank",
-	"custom/playerctl",
-	"custom/separator#blank_2",
-	"hyprland/window",
-	],
+  "custom/cosmic-launcher": {
+    "format": " 󰇙 ",
+    "tooltip": false,
+    "on-click": "~/.config/hypr/scripts/CosmicLauncher.sh"
+  },
 
-"modules-center": [
-	"group/app_drawer",
-	"custom/separator#blank",
-	"group/notify",
-	"custom/separator#dot-line",
-	"hyprland/workspaces#rw",
-	"clock",
-	"custom/separator#dot-line",
-	"custom/weather",
-	"custom/separator#dot-line",
-	"idle_inhibitor",	
-	"custom/hint",	
-	],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": 10
+    }
+  },
 
-"modules-right": [
-	"tray",
-	"network#speed",
-	"custom/separator#dot-line",
-	"group/mobo_drawer",
-	"custom/separator#line",  
-	"group/audio",
-	"custom/separator#dot-line", 
-	"custom/nightlight",
-	"custom/separator#dot-line", 
-	"group/status",
-	],
+  "hyprland/window": {
+    "max-length": 42,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "Desktop"
+    }
+  },
+
+  "clock": {
+    "format": "  {:%a %b %d  %H:%M}",
+    "tooltip-format": "{:%A, %B %d %Y | %H:%M:%S}"
+  },
+
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀  {ifname}",
+    "format-disconnected": "󰖪  offline",
+    "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  muted",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  "tray": {
+    "spacing": 10
+  }
 }

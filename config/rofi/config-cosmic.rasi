@@ -1,0 +1,78 @@
+/* Cosmic style rofi theme */
+
+* {
+  bg-col: #111824ee;
+  bg-col-alt: #182234ee;
+  border-col: #3e5b8f;
+  selected-col: #8fb2ff;
+  text-col: #d9e2ff;
+  text-col-dim: #9fb2d9;
+
+  background-color: transparent;
+  text-color: @text-col;
+}
+
+window {
+  width: 38%;
+  border: 2px;
+  border-color: @border-col;
+  border-radius: 16px;
+  background-color: @bg-col;
+  location: center;
+  anchor: center;
+}
+
+mainbox {
+  spacing: 10px;
+  padding: 12px;
+  background-color: transparent;
+}
+
+inputbar {
+  children: [ "prompt", "entry" ];
+  border-radius: 10px;
+  padding: 10px;
+  background-color: @bg-col-alt;
+}
+
+prompt {
+  enabled: true;
+  text-color: @selected-col;
+  background-color: transparent;
+  padding: 0 6px 0 2px;
+}
+
+entry {
+  placeholder: "Search apps and commands";
+  placeholder-color: @text-col-dim;
+  background-color: transparent;
+}
+
+listview {
+  lines: 10;
+  columns: 1;
+  spacing: 6px;
+  scrollbar: false;
+  background-color: transparent;
+}
+
+element {
+  border-radius: 10px;
+  padding: 8px;
+  background-color: transparent;
+}
+
+element selected {
+  background-color: @selected-col;
+  text-color: #111824;
+}
+
+element-icon {
+  size: 1.2em;
+  background-color: transparent;
+}
+
+element-text {
+  background-color: transparent;
+  text-color: inherit;
+}

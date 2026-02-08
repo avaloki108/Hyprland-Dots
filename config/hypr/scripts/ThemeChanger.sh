@@ -49,7 +49,6 @@ if wallust theme -- "${choice}"; then
   targets=(
     "$HOME/.config/waybar/wallust/colors-waybar.css"
     "$HOME/.config/rofi/wallust/colors-rofi.rasi"
-    "$HOME/.config/kitty/kitty-themes/01-Wallust.conf"
     "$HOME/.config/hypr/wallust/wallust-hyprland.conf"
     "$HOME/.config/ghostty/wallust.conf"
   )
@@ -126,11 +125,6 @@ if wallust theme -- "${choice}"; then
     else
       pkill -SIGUSR2 waybar >/dev/null 2>&1 || true
     fi
-  fi
-
-  # Ask kitty to reload its config so the new 01-Wallust.conf is picked up
-  if pidof kitty >/dev/null; then
-    for pid in $(pidof kitty); do kill -SIGUSR1 "$pid" 2>/dev/null || true; done
   fi
 
   # Ask ghostty to reload its config so the updated wallust.conf is applied
